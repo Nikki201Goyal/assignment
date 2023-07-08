@@ -1,31 +1,53 @@
-<h3>
-Hi, this is my backend task documentation stating how I created it and all. 
-</h3>
+# Backend Task Documentation
 
-<h5>so, here i have used mongodb as a database</h5>
-to do this firstly i created a database using mongo atlas and then connected it with our mongodb compass .
+This documentation provides an overview of the backend task, including the setup, architecture, and instructions for running the code.
+
+## Database Setup
+
+MongoDB was chosen as the database for this project. Follow these steps to set up the database:
+
+1. Create a database using MongoDB Atlas.
+2. Connect the database with MongoDB Compass.
+
+## Environment Configuration
+
+Before running the code, make sure to add the following environment variables to the `.env` file:
+
+DB_DSN=mongodb+srv://<username>:<password>@cluster0.tsaf6wl.mongodb.net/<database>
+DB_DATABASE=Products
 
 
-to run this file the team should first enter thus two things in env.
 
-#DB_DSN=mongodb+srv://tweb5167:test123@cluster0.tsaf6wl.mongodb.net/
-#DB_DATABASE=Products
+## Project Architecture
 
-after that my architecture for this project was 
+The project follows a specific architecture to ensure maintainability and separation of concerns. Here is an overview of the architecture:
 
-1) I used jenseegers/mongodb in laravel 
-2) all the code was done in eloquent
-3) I made folder structure like i made a DB folder inside app which will contain all the database part i.e. model, eloquentRepository, array Generators and this EQ and AG are then called in product model. 
-4) Made a controller productController which contain index method to retrieve data here i have added paginaton as well an dthis method even contain serach functionality. I have added filter if used write abc then the product with named abc will be searched and similarly done for other search functionality as per the requirements.
-5) similarly, it contain delete and update method which will delete product according to their id.
-6) And at last it contain store method which will store product data. Also, i had added validation request file to validate it where id will be unique. (ProductRequest)
+1. The `jenssegers/mongodb` package was utilized in Laravel.
+2. All the code was implemented using Eloquent.
+3. The `app/DB` folder contains the database-related components:
 
-<h3> How can we run the code</h3>
+    - **Models**: Represents the database tables and their relationships.
+    - **Eloquent Repositories**: Handles the database operations for each model.
+    - **Array Generators**: Provides functionality for generating arrays.
 
-1) Add the above said thing in env
-2) Run the code using php artisan serve --port=8080
-3) use admin-api as prefix in url 
-for example smthg like this it will be 
-localhost:8080/admin-api/products
+   These components are utilized in the `Product` model.
+
+4. The `ProductController` handles various operations related to products:
+
+    - `index`: Retrieves product data with pagination and search functionality. Filtering is implemented to search for products based on their names.
+    - `delete` and `update`: Perform deletion and update operations respectively, based on the product ID.
+    - `store`: Stores new product data. A validation request file (`ProductRequest`) ensures that the ID is unique.
+
+## Running the Code
+
+To run the code, follow these steps:
+
+1. Add the environment variables mentioned above to the `.env` file.
+2. Run the code using the command: `php artisan serve --port=8080`.
+3. Access the API endpoints with the `admin-api` prefix in the URL. For example: `localhost:8080/admin-api/products`.
+
+Please ensure that you have set up a Laravel project and have installed the necessary dependencies before running the code.
+
+Feel free to update this documentation with any additional instructions or details as needed.
 
 
